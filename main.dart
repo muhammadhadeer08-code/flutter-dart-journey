@@ -1,74 +1,42 @@
-//Write a program that takes an integer score from the user.
-//Use an if-else statement to print "Pass" if the score is 50 or greater
-//and "Fail" if it is less than 50. Provide the code when ready.
+//LOOPS
 /*
-import "dart:io";
-
 void main() {
-  print("put any number:");
-  int a = int.parse(stdin.readLineSync()!);
-  if (a >= 50) {
-    print("pass");
-  } else {
-    print("fail");
+  for (int i = 0; i <= 3; i++) {
+    print("countdown start:$i");
   }
 }
 
-//Write a program that takes an integer score from the user,
-// and using an if-else if-else statement, check:
-//If the score is 80 or greater, print "Grade A".
-//If the score is 50 or greater (but less than 80), print "Grade B".
-//If the score is less than 50, print "Fail".
-import "dart:io";
-
 void main() {
-  print("Put the Score:");
-  int Score = int.parse(stdin.readLineSync()!);
-  if (Score >= 80) {
-    print("Grade=A");
-  } else if (Score >= 50 && Score <= 80) {
-    print("Grade=B");
-  } else {
-    print("fail");
+  int i = 3;
+  while (i >= 0) {
+    print("countdown:=$i");
+    i--;
   }
 }
-*/
-/*Challenge Question:
-
-Write a Dart program that takes a day of the week as a String input from the user.
- Using a switch-case statement:
-If the input is "Monday", "Tuesday", "Wednesday", "Thursday", or "Friday", print "This is a Working Day."
-If the input is "Saturday" or "Sunday", print "This is the Weekend!"
-If the input matches none of these valid days, use a default case to print "Invalid input! Please enter a valid day name."
-*/
-import "dart:io";
 
 void main() {
-  print("Enter the day:");
-  String weekday = stdin.readLineSync()!;
-  switch (weekday) {
-    case "Monday":
-      print("This is a working day");
-      break;
-    case "Tuesday":
-      print("This is a working day");
-      break;
-    case "Wednesday":
-      print("This a working day");
-      break;
-    case "Thursday":
-      print("This is a working day");
-      break;
-    case "Friday":
-      print("This a working day");
-      break;
-    case "saturday":
-      print("This is a weekend day");
-      break;
-    case "Sunday":
-      print("This is a weekend day");
-      break;
-    default:
-      print("Invalid input! Please enter a valid");
+  int i = 5;
+  do {
+    print("run from 5 to 10:$i");
+    i++;
+  } while (i <= 10);
+}
+*/
+//The Challenge:
+//Write a Dart program using a loop that counts down from 20 to 1.
+//For every number, your program must check and print whether the number is Even or Odd.
+//However, there is a strict rule: if the number is a multiple of 4, your program
+//must completely skip it and move to the next number without printing anything for it.
+//Write the code, run it, and see if you can get the exact logic right!
+void main() {
+  for (int i = 20; i >= 1; i--) {
+    if (i % 4 == 0) {
+      continue;
+    }
+    if (i % 2 == 0) {
+      print("The number $i is even");
+    } else {
+      print("The number $i is odd");
+    }
   }
 }
