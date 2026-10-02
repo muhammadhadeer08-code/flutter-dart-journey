@@ -19,7 +19,7 @@ import 'dart:io';
 
 void discountchecker(String name, int age, double bill) {
   for (int i = 1; i <= 3; i++) {
-    print("Checking System");
+    print("Checking System $i");
   }
   if (age >= 25) {
     print("Status: You are eligible for the Youth Discount!");
@@ -38,13 +38,14 @@ void main() {
   int age = int.parse(stdin.readLineSync()!);
   print("What is your bill");
   double bill = double.parse(stdin.readLineSync()!);
-  if (bill <= 5000) {
+  if (bill > 5000) {
     double discount = bill * 0.20;
     double finalBill = bill - discount;
     print("Final payable amount: $finalBill");
   } else {
-    (bill >= 5000, bill * 0.10);
-    print("final payable amount");
+    double discount = bill * 0.10;
+    double finalBill = bill - discount;
+    print("Final payable amount: $finalBill");
   }
   discountchecker(name, age, bill);
 }
