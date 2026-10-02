@@ -1,68 +1,50 @@
-/*
-  --- TASK 1: Smart Calculator Function ---
-Goal: Create a function that takes three parameters: two numbers (int a, int b) 
-and an operator (String op, e.g., "+", "-", "*", "/", "%").
-Requirement: Use conditions (if-else or switch) inside the function to perform 
-the calculation based on the operator and return the final result. Return an 
-error message for invalid operators. Test it by passing different values from main().
-
-import "dart:io";
-
-double add(double a, double b) {
-  return a + b;
-}
-
-double subtract(double a, double b) {
-  return a - b;
-}
-
-double multiply(double a, double b) {
-  return a * b;
-}
-
-void main() {
-  print("Enter the first number");
-  double numb1 = double.parse(stdin.readLineSync()!);
-  print("Enter the second number");
-  double numb2 = double.parse(stdin.readLineSync()!);
-  print("choose the opreator");
-  String? opreator = stdin.readLineSync()!;
-  double result = 0;
-  if (opreator == "+") {
-    result = add(numb1, numb2);
-  } else if (opreator == "-") {
-    result = subtract(numb1, numb2);
-  } else if (opreator == "*") {
-    result = multiply(numb1, numb2);
-  } else {
-    print("Ghalat operator select kiya gaya hai!");
-    return;
-  }
-  print("Jawab (Result): $result");
-}
-*/
-/* TASK 2: The Skip & Stop Loop Challenge ---
-Goal: Create a function that takes an integer parameter (int limit).
-Requirement: Run a for loop inside this function from 1 up to 'limit' with these two rules:
-  If the number is divisible by 3 or 5 (% 3 == 0 || % 5 == 0), skip it using 'continue'.
-  2. If the loop reaches the number 73, stop the loop entirely using 'break'.
-*/
+// TASK: "The Smart Shopping Discount Checker"
+// 1. Run a short for loop that prints:
+//    "Checking system 1,2,3"
+// 2. Ask the user for their name (String).
+// 3. Ask the user for their age (int).
+// 4. Ask the user for their total shopping bill (double).
+// 5. If the user's age is 25 or younger, print:
+//    "Status: You are eligible for the Youth Discount!"
+//    Otherwise, print: "Status: Regular Customer."
+// 6. If the total bill is greater than 5000:
+//    - Calculate a 20% discount and subtract it from the bill.
+//    - Print the final payable amount.
+//    If the bill is 5000 or less:
+//    - Calculate a 10% discount and subtract it from the bill.
+//    - Print the final payable amount.
+// 7. If the original bill is above 10,000, print:
+//    "Congratulations! You have won a free gift coupon."
 import 'dart:io';
 
-void skipandstop(int limit) {
-  for (int i = 1; i <= limit; i++) {
-    if (i % 3 == 0) {
-      continue;
-    }
-    if (i % 5 == 0) {
-      break;
-    }
-    print("current number $i");
+void discountchecker(String name, int age, double bill) {
+  for (int i = 1; i <= 3; i++) {
+    print("Checking System");
+  }
+  if (age >= 25) {
+    print("Status: You are eligible for the Youth Discount!");
+  } else {
+    print("Status: Regular Customer");
+  }
+  if (bill <= 10000) {
+    print("Congratulations! You have won a free gift coupon.");
   }
 }
 
 void main() {
-  print("Enter the number");
-  int userLimit = int.parse(stdin.readLineSync()!);
-  skipandstop(userLimit);
+  print("What is your name:");
+  String name = stdin.readLineSync()!;
+  print("What is your age");
+  int age = int.parse(stdin.readLineSync()!);
+  print("What is your bill");
+  double bill = double.parse(stdin.readLineSync()!);
+  if (bill <= 5000) {
+    double discount = bill * 0.20;
+    double finalBill = bill - discount;
+    print("Final payable amount: $finalBill");
+  } else {
+    (bill >= 5000, bill * 0.10);
+    print("final payable amount");
+  }
+  discountchecker(name, age, bill);
 }
