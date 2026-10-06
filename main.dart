@@ -1,51 +1,50 @@
-// TASK: "The Smart Shopping Discount Checker"
-// 1. Run a short for loop that prints:
-//    "Checking system 1,2,3"
-// 2. Ask the user for their name (String).
-// 3. Ask the user for their age (int).
-// 4. Ask the user for their total shopping bill (double).
-// 5. If the user's age is 25 or younger, print:
-//    "Status: You are eligible for the Youth Discount!"
-//    Otherwise, print: "Status: Regular Customer."
-// 6. If the total bill is greater than 5000:
-//    - Calculate a 20% discount and subtract it from the bill.
-//    - Print the final payable amount.
-//    If the bill is 5000 or less:
-//    - Calculate a 10% discount and subtract it from the bill.
-//    - Print the final payable amount.
-// 7. If the original bill is above 10,000, print:
-//    "Congratulations! You have won a free gift coupon."
-import 'dart:io';
-
-void discountchecker(String name, int age, double bill) {
-  for (int i = 1; i <= 3; i++) {
-    print("Checking System $i");
-  }
-  if (age >= 25) {
-    print("Status: You are eligible for the Youth Discount!");
-  } else {
-    print("Status: Regular Customer");
-  }
-  if (bill <= 10000) {
-    print("Congratulations! You have won a free gift coupon.");
-  }
-}
-
+//Create an empty list of strings named inventory.
+//Add a single item "Milk" to this list using the correct method.
+//Print the list to check if it worked.
 void main() {
-  print("What is your name:");
-  String name = stdin.readLineSync()!;
-  print("What is your age");
-  int age = int.parse(stdin.readLineSync()!);
-  print("What is your bill");
-  double bill = double.parse(stdin.readLineSync()!);
-  if (bill > 5000) {
-    double discount = bill * 0.20;
-    double finalBill = bill - discount;
-    print("Final payable amount: $finalBill");
-  } else {
-    double discount = bill * 0.10;
-    double finalBill = bill - discount;
-    print("Final payable amount: $finalBill");
+  List<String> inventory = [];
+  inventory.add("Milk");
+  inventory.addAll(["Eggs", "Bread", "Butter"]);
+  print("items present $inventory ");
+  inventory.length;
+  print(inventory.length);
+  print(inventory[0]);
+  inventory.remove("Bread");
+  print(inventory);
+  print(inventory.contains("Bread"));
+  print(inventory);
+  inventory.clear();
+  print(inventory);
+  print(inventory.isEmpty);
+  List<int> numbers = [5, 4, 3, 2, 9, 1];
+  numbers.sort();
+  print(numbers);
+  print(numbers.indexOf(4));
+  numbers.insert(0, 100);
+  print(numbers);
+  print(numbers.reversed.toList());
+  for (var number in numbers) {
+    print("Number is: $number");
   }
-  discountchecker(name, age, bill);
+  int totalSum = 0;
+  for (var number in numbers) {
+    totalSum = totalSum + number;
+  }
+  print("Total Sum is: $totalSum");
+  for (var number in numbers) {
+    if (number % 2 == 0) {
+      print("Even number is: $number");
+    }
+  }
+  List<int> evenNumbers = [];
+  for (var number in numbers) {
+    if (number % 2 == 0) {
+      evenNumbers.add(number);
+    }
+  }
+  print("Nayi even numbers ki list: $evenNumbers");
+  var evenList = numbers.where((number) => number % 2 == 0).toList();
+  print("Where method se even list: $evenList");
+  var multipliedList = numbers.map((number) => number * 2).toList();
+  print("Har number ko 2 se multiply karne ke baad: $multipliedList");
 }
