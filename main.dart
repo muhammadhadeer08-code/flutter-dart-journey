@@ -1,50 +1,48 @@
-//Create an empty list of strings named inventory.
-//Add a single item "Milk" to this list using the correct method.
-//Print the list to check if it worked.
+/*
+"Simple Movie Ticket Pricing System"
+Write a Dart program to calculate the total ticket price for a movie theater based on age and ticket type.
+Requirements:Create variables for:Customer's name (String),Customer's age (int)
+Whether they want a VIP seat or a normal seat (bool isVip = true or false)
+Use Operat0rs and Control Flow (if-else) to calculate the final price using these rules:
+Base ticket price is $10.
+If the customer's age is under 12, they get a 50% discount on the base price.
+If the customer's age is above 60, they get a 30% discount on the base price.
+If they selected VIP (isVip = true), add an extra $5 to the final ticket price.
+Print a clean summary showing the customer's name, age, seat type, and the final calculated ticket price.
+*/
+import "dart:io";
+
 void main() {
-  List<String> inventory = [];
-  inventory.add("Milk");
-  inventory.addAll(["Eggs", "Bread", "Butter"]);
-  print("items present $inventory ");
-  inventory.length;
-  print(inventory.length);
-  print(inventory[0]);
-  inventory.remove("Bread");
-  print(inventory);
-  print(inventory.contains("Bread"));
-  print(inventory);
-  inventory.clear();
-  print(inventory);
-  print(inventory.isEmpty);
-  List<int> numbers = [5, 4, 3, 2, 9, 1];
-  numbers.sort();
-  print(numbers);
-  print(numbers.indexOf(4));
-  numbers.insert(0, 100);
-  print(numbers);
-  print(numbers.reversed.toList());
-  for (var number in numbers) {
-    print("Number is: $number");
+  print("What is your name");
+  String name = stdin.readLineSync()!;
+
+  print("What is your age");
+  int age = int.parse(stdin.readLineSync()!);
+
+  print("What is your seat type for vip (Yes)and for normal (No)");
+  String seattype = stdin.readLineSync()!;
+
+  double price = 10.0;
+  double finalprice = price;
+
+  if (age < 12) {
+    finalprice = finalprice * 0.5;
+    print("Congratulation you get 50% age discount");
+  } else if (age > 60) {
+    finalprice = finalprice * 0.7;
+    print("Congratulations you get 30% age discount");
+  } else {
+    print("You will pay for full ticket");
   }
-  int totalSum = 0;
-  for (var number in numbers) {
-    totalSum = totalSum + number;
+  if (seattype == "yes") {
+    finalprice = finalprice + 0.5;
+    print("vip seat selected.");
+  } else {
+    print("Normal seat selected");
   }
-  print("Total Sum is: $totalSum");
-  for (var number in numbers) {
-    if (number % 2 == 0) {
-      print("Even number is: $number");
-    }
-  }
-  List<int> evenNumbers = [];
-  for (var number in numbers) {
-    if (number % 2 == 0) {
-      evenNumbers.add(number);
-    }
-  }
-  print("Nayi even numbers ki list: $evenNumbers");
-  var evenList = numbers.where((number) => number % 2 == 0).toList();
-  print("Where method se even list: $evenList");
-  var multipliedList = numbers.map((number) => number * 2).toList();
-  print("Har number ko 2 se multiply karne ke baad: $multipliedList");
+  // Final Summary Output
+  print("\n--- Ticket Summary ---");
+  print("Name: $name");
+  print("Age: $age");
+  print("Final Ticket Price: \$$finalprice");
 }
