@@ -1,48 +1,44 @@
 /*
-"Simple Movie Ticket Pricing System"
-Write a Dart program to calculate the total ticket price for a movie theater based on age and ticket type.
-Requirements:Create variables for:Customer's name (String),Customer's age (int)
-Whether they want a VIP seat or a normal seat (bool isVip = true or false)
-Use Operat0rs and Control Flow (if-else) to calculate the final price using these rules:
-Base ticket price is $10.
-If the customer's age is under 12, they get a 50% discount on the base price.
-If the customer's age is above 60, they get a 30% discount on the base price.
-If they selected VIP (isVip = true), add an extra $5 to the final ticket price.
-Print a clean summary showing the customer's name, age, seat type, and the final calculated ticket price.
+Phase 1 Revision Project: "Smart Electricity Bill Calculator"
+Problem Statement
+Create a Dart command-line application that calculates a household electricity bill based on the consumed units.
+Requirements
+1:When te program runs, take input from the user for their name (String) and total consumed units (int) using dart:io.
+The bill calculation must follow these slab rates:First 100 units: Rs. 10 per unit.
+From 101 to 300 units: Rs. 15 per unit (the first 100 units at 10, and the remaining units at 15).
+Above 300 units: Rs. 20 per unit.
+Fixed Meter Tax: If the total bill amount exceeds Rs. 2000, an extra 5% tax should be added to it. If it is Rs. 2000 or less,
+ no tax should be applied.
+Control Flow / Conditions: Implement all this logic using if-else or switch statements.
+Output: Finally, print a clean and formatted bill showing the user's name, total units consumed, rate breakdown, tax (if any), 
+and the Final Total Payable Amount.
 */
 import "dart:io";
 
 void main() {
   print("What is your name");
   String name = stdin.readLineSync()!;
-
-  print("What is your age");
-  int age = int.parse(stdin.readLineSync()!);
-
-  print("What is your seat type for vip (Yes)and for normal (No)");
-  String seattype = stdin.readLineSync()!;
-
-  double price = 10.0;
-  double finalprice = price;
-
-  if (age < 12) {
-    finalprice = finalprice * 0.5;
-    print("Congratulation you get 50% age discount");
-  } else if (age > 60) {
-    finalprice = finalprice * 0.7;
-    print("Congratulations you get 30% age discount");
+  print("Total consumed units");
+  int units = int.parse(stdin.readLineSync()!);
+  double Billamount = 0.0;
+  if (units <= 100) {
+    Billamount = units * 10;
+  } else if (units <= 300) {
+    Billamount = (100 * 10) + ((units - 100) * 15);
   } else {
-    print("You will pay for full ticket");
+    Billamount = (100 * 10) + (200 * 15) + ((units - 300) * 20);
   }
-  if (seattype == "yes") {
-    finalprice = finalprice + 0.5;
-    print("vip seat selected.");
+  double tax = 0.0;
+  if (Billamount > 2000) {
+    tax = Billamount * 0.05;
   } else {
-    print("Normal seat selected");
+    print("No extra charges will applied");
   }
-  // Final Summary Output
-  print("\n--- Ticket Summary ---");
-  print("Name: $name");
-  print("Age: $age");
-  print("Final Ticket Price: \$$finalprice");
+  double totalPayable = Billamount + tax;
+  print("\n--- ELECTRICITY BILL ---");
+  print("Customer Name: $name");
+  print("Units Consumed: $units");
+  print("Base Bill Amount: Rs. $Billamount");
+  print("Tax Amount: Rs. $tax");
+  print("Total Payable Amount: Rs. $totalPayable");
 }
